@@ -1,0 +1,973 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ build="b103"
+ majorVersion="8"
+ minorVersion="5"
+ modelPersistenceProviderPackage="PostgresPersistenceProviderPackage"
+ revision="5"
+ schemaVersion="1054"
+ universal="password">
+    <Things>
+        <Thing
+         description="general utility to support remote device calculation."
+         documentationContent=""
+         effectiveThingPackage="ConfiguredThing"
+         enabled="true"
+         homeMashup=""
+         identifier=""
+         lastModifiedDate="2020-06-25T05:21:39.652Z"
+         name="KepwareUtil"
+         projectName=""
+         published="false"
+         tags=""
+         thingTemplate="GenericThing"
+         valueStream="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <ThingShape>
+                <PropertyDefinitions></PropertyDefinitions>
+                <ServiceDefinitions>
+                    <ServiceDefinition
+                     aspect.isAsync="true"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="AutoKepwareCreate">
+                        <ResultType
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             aspect.defaultValue="false"
+                             baseType="BOOLEAN"
+                             description=""
+                             name="IgnoreTemplate"
+                             ordinal="2"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.isRequired="true"
+                             aspect.thingTemplate="ValueStream"
+                             baseType="THINGNAME"
+                             description=""
+                             name="ValueStreamName"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="AutoKepwareDelete">
+                        <ResultType
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             aspect.defaultValue="false"
+                             baseType="BOOLEAN"
+                             description=""
+                             name="IgnoreTemplate"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="AutoKepwareIngestionStat">
+                        <ResultType
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             aspect.defaultValue="3"
+                             aspect.isRequired="true"
+                             aspect.maximumValue="10"
+                             aspect.minimumValue="2"
+                             baseType="INTEGER"
+                             description=""
+                             name="maxSampledProperties"
+                             ordinal="5"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="5"
+                             aspect.isRequired="true"
+                             aspect.maximumValue="15"
+                             aspect.minimumValue="3"
+                             baseType="INTEGER"
+                             description=""
+                             name="maxSampledThings"
+                             ordinal="4"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="1"
+                             aspect.isRequired="true"
+                             aspect.maximumValue="120"
+                             aspect.minimumValue="1"
+                             baseType="INTEGER"
+                             description=""
+                             name="periodInMinute"
+                             ordinal="3"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.isRequired="true"
+                             baseType="DATETIME"
+                             description=""
+                             name="startTime"
+                             ordinal="2"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.isRequired="true"
+                             baseType="THINGTEMPLATENAME"
+                             description=""
+                             name="thingTemplate"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="AutoKepwareRateSummary">
+                        <ResultType
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             aspect.defaultValue="1"
+                             aspect.isRequired="true"
+                             aspect.maximumValue="120"
+                             aspect.minimumValue="1"
+                             baseType="INTEGER"
+                             description=""
+                             name="periodInMinute"
+                             ordinal="3"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.isRequired="true"
+                             baseType="DATETIME"
+                             description=""
+                             name="startTime"
+                             ordinal="2"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.isRequired="true"
+                             baseType="THINGTEMPLATENAME"
+                             description=""
+                             name="thingTemplate"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="TotalDeviceByTemplate">
+                        <ResultType
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             aspect.defaultValue="RemoteThing"
+                             aspect.isRequired="false"
+                             baseType="THINGTEMPLATENAME"
+                             description=""
+                             name="thingTemplate"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="TotalDeviceByTemplateWithTemplate">
+                        <ResultType
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             aspect.defaultValue="RemoteThing"
+                             aspect.isRequired="false"
+                             baseType="THINGTEMPLATENAME"
+                             description=""
+                             name="thingTemplate"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                </ServiceDefinitions>
+                <EventDefinitions></EventDefinitions>
+                <ServiceMappings></ServiceMappings>
+                <ServiceImplementations>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="AutoKepwareCreate">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        //step 1, to get all kepware gateway.
+                                        var params = {
+                                        	thingShape: undefined /* THINGSHAPENAME */,
+                                        	maxItems: 500 /* NUMBER */,
+                                        	nameMask: undefined /* STRING */,
+                                        	query: undefined /* QUERY */,
+                                        	thingTemplate: 'IndustrialGateway' /* THINGTEMPLATENAME */
+                                        };
+                                        
+                                        // result: INFOTABLE dataShape: DeviceStatus
+                                        var gatewayResult = Resources["DeviceFunctions"].SearchDevices(params);
+                                        var moreGateway=false;
+                                        //if more gateway, we may have to add suffix to each know in order to avoid same thing name from different gateway
+                                        if(gatewayResult.rows.length>1)    moreGateway = true;
+                                        
+                                        for(var gatewayindex=0;gatewayindex<gatewayResult.rows.length;gatewayindex++){
+                                            var row=gatewayResult.rows[gatewayindex];
+                                            var gatewayName = row.name;
+                                            var templateName = "T-"+gatewayName; //naming convention for template name.
+                                            var templateProperties = [];
+                                            if(!IgnoreTemplate){
+                                                //logger.debug("going to create template"+templateName+" for gateway:"+gatewayName);
+                                                try{
+                                                     Resources["EntityServices"].CreateThingTemplate({
+                                                        name: templateName /* STRING */,
+                                                        description: "Template based on gateway:"+row.name /* STRING */,
+                                                        thingTemplateName: "RemoteThing" /* THINGTEMPLATENAME */,
+                                                        tags: undefined /* TAGS */
+                                                    });
+                                                    logger.info("Created template successfully with name:"+templateName);
+                                        
+                                                    //set value stream.
+                                                    logger.info("Value stream name is:"+ValueStreamName);
+                                                    if(ValueStreamName !== undefined){
+                                                        //logger.info("going to setup value stream.");
+                                                        try{
+                                                            ThingTemplates[templateName].SetValueStream({
+                                                                name: ValueStreamName /* THINGNAME */
+                                                            });
+                                                            logger.debug("Value Stream has been set to template, value stream name:"+ValueStreamName);
+                                                        }catch(e){
+                                                            logger.error("Failed to set value stream:"+ValueStreamName+" to template:"+templateName);
+                                                        }
+                                                    }
+                                                    //ThingTemplates[templateName].EnableThing();
+                                                    //ThingTemplates[templateName].RestartThing();
+                                                    //create template properties based on Kepware tags under each devices.
+                                                    var templateGroupResult = Things[gatewayName].BrowseGroups({filter:undefined, path:undefined});
+                                                    for(var templateGroupIndex = 0; templateGroupIndex<templateGroupResult.rows.length;templateGroupIndex++){
+                                                        var templateGroupRow = templateGroupResult[templateGroupIndex];
+                                                        var templateGroupFullPath = ""+(templateGroupRow.FullPath);
+                                                        if(templateGroupFullPath.charAt(0)==="_"||templateGroupRow.HasAnySubGroups===false || templateGroupRow.HasNonSystemSubGroups === false|| templateGroupRow.IsSystemGroup){
+                                                            continue;
+                                                        }
+                                                        var templateSubGroupResult = Things[gatewayName].BrowseGroups({filter:undefined, path:templateGroupFullPath});
+                                                        for(var templateSubGroupIndex=0;templateSubGroupIndex<templateSubGroupResult.rows.length;templateSubGroupIndex++){
+                                                            var templateSubGroupRow=templateSubGroupResult[templateSubGroupIndex];
+                                                            var templateSubGroupFullPath = ""+(templateSubGroupRow.FullPath);
+                                                            if(templateSubGroupRow.IsSystemGroup) continue;
+                                                            //if new property
+                                                            var templateItemsResult=Things[gatewayName].BrowseItems({
+                                                                filter: undefined /* STRING */,
+                                                                path: templateSubGroupFullPath /* STRING */
+                                                            });
+                                                            if(templateItemsResult.rows.length===0) continue;
+                                                            //add a stop after first round here.
+                                                            for(var templateItemsIndex=0;templateItemsIndex<templateItemsResult.rows.length;templateItemsIndex++){
+                                                                var templateItemsRow=templateItemsResult[templateItemsIndex];
+                                                                if(templateProperties.indexOf(templateItemsRow.Name)==-1){
+                                                                    //new property
+                                                                    templateProperties.push(templateItemsRow.Name);
+                                                                    ThingTemplates[templateName].AddPropertyDefinition({
+                                                                        defaultValue: undefined /* STRING */,
+                                                                        remoteBindingAspects: undefined /* JSON */,
+                                                                        description: undefined /* STRING */,
+                                                                        readOnly: undefined /* BOOLEAN */,
+                                                                        type: templateItemsRow.BaseType /* BASETYPENAME */,
+                                                                        remote: undefined /* BOOLEAN */,
+                                                                        remotePropertyName: undefined /* STRING */,
+                                                                        timeout: undefined /* INTEGER */,
+                                                                        pushType: undefined /* STRING */,
+                                                                        dataChangeThreshold: undefined /* NUMBER */,
+                                                                        logged: true /* BOOLEAN */,
+                                                                        name: templateItemsRow.Name /* STRING */,
+                                                                        pushThreshold: undefined /* NUMBER */,
+                                                                        dataChangeType: "VALUE" /* STRING */,
+                                                                        category: undefined /* STRING */,
+                                                                        persistent: undefined /* BOOLEAN */,
+                                                                        dataShape: undefined /* DATASHAPENAME */
+                                                                    });
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    //ThingTemplates[templateName].DisableThing();
+                                                    //ThingTemplates[templateName].EnableThing();
+                                                    //ThingTemplates[templateName].RestartThing();
+                                                }catch(e){
+                                                    logger.error("Error happened when create template with name:"+templateName+", message:"+e);
+                                                }
+                                            }
+                                            //start to create things and bind remote properties.
+                                            try{
+                                                //browse kepware groups
+                                                // result: INFOTABLE dataShape: "IndustrialGroups"
+                                                var groupresult =  Things[gatewayName].BrowseGroups({
+                                                    filter: undefined /* STRING */,
+                                                    path: undefined /* STRING */
+                                                });
+                                                for(var groupindex=0;groupindex<groupresult.rows.length;groupindex++){
+                                                    var grouprow = groupresult.rows[groupindex];
+                                                    var groupfullpath = ""+(grouprow.FullPath);
+                                                    if(groupfullpath.charAt(0)==="_" || grouprow.HasAnySubGroups===false || grouprow.HasNonSystemSubGroups === false|| grouprow.IsSystemGroup){
+                                                        continue;
+                                                    }
+                                                    //search devices.
+                                                    var subresult = Things[gatewayName].BrowseGroups({
+                                                        filter: undefined /* STRING */,
+                                                        path: groupfullpath /* STRING */
+                                                    });
+                                                    for(var subindex=0;subindex<subresult.rows.length;subindex++){
+                                                        var subrow = subresult.rows[subindex];
+                                                        if(subrow.IsSystemGroup) continue;
+                                                        
+                                                        var subfullpath=""+(subrow.FullPath);
+                                                        
+                                                        //start to create thing and binding.
+                                                        try{
+                                                            var newThingName = subfullpath;
+                                                            if(moreGateway) newThingName = newThingName +"_" + gatewayindex;
+                                                            Resources["EntityServices"].CreateThing({
+                                                                name: newThingName /* STRING */,
+                                                                description: "for "+subfullpath+" under "+gatewayName /* STRING */,
+                                                                thingTemplateName: templateName /* THINGTEMPLATENAME */,
+                                                                tags: undefined /* TAGS */
+                                                            });
+                                                            Things[newThingName].EnableThing();
+                                                            Things[newThingName].RestartThing();
+                                                            logger.debug("Successfully created and enabled thing for:"+newThingName);
+                                                        }catch(e){
+                                                            logger.error("Failed to create thing for:"+subfullpath);
+                                                        }
+                                                    }
+                                                    
+                                                    var resubresult = Things[gatewayName].BrowseGroups({
+                                                        filter: undefined /* STRING */,
+                                                        path: groupfullpath /* STRING */
+                                                    });
+                                                    for(var resubindex=0;resubindex<subresult.rows.length;resubindex++){
+                                                        var resubrow = resubresult.rows[resubindex];
+                                                        if(resubrow.IsSystemGroup) continue;
+                                                        
+                                                        var resubfullpath=""+(resubrow.FullPath);
+                                                        var reitemsresult = Things[gatewayName].BrowseItems({
+                                                            filter: undefined /* STRING */,
+                                                            path: resubfullpath /* STRING */
+                                                        });
+                                                        if(reitemsresult.rows.length===0) continue;
+                                                        //start to create thing and binding.
+                                                        try{
+                                                            var renewThingName = resubfullpath;
+                                                            if(moreGateway) renewThingName = renewThingName +"_" + gatewayindex;
+                                                            
+                                        
+                                                            //set shape
+                                                            //logger.info("going to add shape IndustrialThingShape to this thing.");
+                                                            try{
+                                                                 Resources["EntityServices"].AddShapeToThing({
+                                                                    name: renewThingName /* THINGNAME */,
+                                                                    thingShapeName: "IndustrialThingShape" /* THINGSHAPENAME */
+                                                                });
+                                                                Things[renewThingName].DisableThing();
+                                                                Things[renewThingName].EnableThing();
+                                                                logger.debug("Successfully added shape to Thing:"+renewThingName);
+                                                                Things[renewThingName].RestartThing();
+                                                            }catch(e){
+                                                                logger.error("Failed to add shape to Thing:"+newThingName);
+                                                            }
+                                                            //assign industril thing and restart
+                                                            try{
+                                                                Things[renewThingName].IndustrialThing=gatewayName;
+                                                              
+                                                                Things[renewThingName].DisableThing();
+                                                                Things[renewThingName].EnableThing();
+                                                                logger.debug("Successfully set industrial value to Thing:"+renewThingName);
+                                                                
+                                                                Things[renewThingName].RestartThing();
+                                                            }catch(e){
+                                                                logger.error("Failed to setup industrail thing:"+gatewayName+" to thing:"+renewThingName);
+                                                            }
+                                                            
+                                                            logger.debug("Start to bind remote property to :"+renewThingName);
+                                                            
+                                                            for(var reitemindex=0;reitemindex<reitemsresult.rows.length;reitemindex++){
+                                                                var reitemrow = reitemsresult.rows[reitemindex];
+                                                                //logger.warn(groupfullpath + "  "+subfullpath + "  " + itemrow.Name);
+                                                                var aspects = {
+                                                                    "industrialDataType":reitemrow.SourceType,
+                                                                    "dataShape":reitemrow.DataShape,
+                                                                    "startType":"readEdgeValue",
+                                                                    "source":reitemrow.Source,
+                                                                    "tagAddress":reitemrow.Source,
+                                                                    "tagType":"Static"
+                                                                };
+                                                                //logger.debug("Aspects:"+aspects);
+                                                                // result: INFOTABLE dataShape: "PropertyDefinition"
+                                                                var propertyHistoryResult =  Things[renewThingName].GetPropertyDefinition({name: reitemrow.Name /* STRING */});
+                                                                if(propertyHistoryResult.rows.length===0){
+                                                                    //add new property
+                                                                    try{
+                                                                        Things[renewThingName].AddPropertyDefinition({
+                                                                            defaultValue: undefined /* STRING */,
+                                                                            remoteBindingAspects: aspects /* JSON */,
+                                                                            description: undefined /* STRING */,
+                                                                            readOnly: undefined /* BOOLEAN */,
+                                                                            type: reitemrow.BaseType /* BASETYPENAME */,
+                                                                            remote: true /* BOOLEAN */,
+                                                                            remotePropertyName: reitemrow.Source /* STRING */,
+                                                                            timeout: undefined /* INTEGER */,
+                                                                            pushType: "VALUE" /* STRING */,
+                                                                            dataChangeThreshold: undefined /* NUMBER */,
+                                                                            logged: true /* BOOLEAN */,
+                                                                            name: reitemrow.Name /* STRING */,
+                                                                            pushThreshold: undefined /* NUMBER */,
+                                                                            dataChangeType: "VALUE" /* STRING */,
+                                                                            category: undefined /* STRING */,
+                                                                            persistent: undefined /* BOOLEAN */,
+                                                                            dataShape: undefined /* DATASHAPENAME */
+                                                                        });
+                                                                        //Things[renewThingName].DisableThing();
+                                                                        //Things[renewThingName].EnableThing();
+                                                                    }catch(e){
+                                                                        logger.error("failed to bind property:"+reitemrow.Name+" error:"+e);
+                                                                    }
+                                                                }else{
+                                                                    //update property and add remote binding.
+                                                                     Things[renewThingName].SetRemotePropertyBinding({
+                                                                        propertyName: reitemrow.Name /* STRING */,
+                                                                        pushThreshold: undefined /* NUMBER */,
+                                                                        aspects: aspects /* JSON */,
+                                                                        foldType: undefined /* STRING */,
+                                                                        sourcePropertyName: reitemrow.Source /* STRING */,
+                                                                        timeout: undefined /* INTEGER */,
+                                                                        pushType: "VALUE" /* STRING */,
+                                                                        cacheTime: undefined /* INTEGER */
+                                                                    });
+                                                                }
+                                                            }
+                                                            
+                                                            Things[renewThingName].RestartThing();
+                                                            logger.debug("new thing has been created/enabled/binded successfully:"+renewThingName);
+                                                        }catch(e){
+                                                            logger.error("Error happened when manage new thing for:"+resubfullpath+" error:"+e);
+                                                        }
+                                                    }
+                                                }
+                                                
+                                            }catch(e){
+                                                logger.error("Error happened when create things for template with name:"+templateName+", message:"+e);
+                                            }
+                                            
+                                        }
+                                        
+                                        logger.warn("KepwareUtil AutoKepwareCreate task finished!!!");
+                                        var result=gatewayResult;
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="AutoKepwareDelete">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        //step 1, to get all kepware gateway.
+                                        var params = {
+                                        	thingShape: undefined /* THINGSHAPENAME */,
+                                        	maxItems: 500 /* NUMBER */,
+                                        	nameMask: undefined /* STRING */,
+                                        	query: undefined /* QUERY */,
+                                        	thingTemplate: 'IndustrialGateway' /* THINGTEMPLATENAME */
+                                        };
+                                        
+                                        // result: INFOTABLE dataShape: DeviceStatus
+                                        var gatewayResult = Resources["DeviceFunctions"].SearchDevices(params);
+                                        var moreGateway=false;
+                                        //if more gateway, we may have to add suffix to each know in order to avoid same thing name from different gateway
+                                        if(gatewayResult.rows.length>1)    moreGateway = true;
+                                        
+                                        for(var gatewayindex=0;gatewayindex<gatewayResult.rows.length;gatewayindex++){
+                                            var row=gatewayResult.rows[gatewayindex];
+                                            var gatewayName = row.name;
+                                            var templateName = "T-"+gatewayName;
+                                            logger.debug("going to create template"+templateName+" for gateway:"+gatewayName);
+                                            try{
+                                                var templateparams = {
+                                                    thingShape: undefined /* THINGSHAPENAME */,
+                                                    maxItems: 300000 /* NUMBER */,
+                                                    nameMask: undefined /* STRING */,
+                                                    query: undefined /* QUERY */,
+                                                    thingTemplate: templateName /* THINGTEMPLATENAME */
+                                                };
+                                        
+                                                // result: INFOTABLE dataShape: DeviceStatus
+                                                var deviceresult = Resources["DeviceFunctions"].SearchDevices(templateparams);
+                                                for(var deviceindex=0;deviceindex<deviceresult.rows.length;deviceindex++){
+                                                    var thingName = deviceresult.rows[deviceindex].name;
+                                                    try{
+                                                        Resources["EntityServices"].DeleteThing({name:thingName});
+                                                        logger.info("Thing was deleted successfully:" + thingName);
+                                                    }catch(e){
+                                                        logger.error("Failed to delete:"+deviceresult.rows[deviceindex].name);
+                                                    }
+                                                }
+                                                //if ignore tmeplate delete
+                                                if(IgnoreTemplate) continue;
+                                                //clean template
+                                                try{
+                                                    Resources["EntityServices"].DeleteThingTemplate({name:templateName});
+                                                    logger.info("Template was deleted successfully:"+templateName);
+                                                }catch(e){
+                                                    logger.error("Failed to delete template:"+templateName);
+                                                }
+                                                
+                                            }catch(e){
+                                                logger.error("Error happened when clean template with name:"+templateName+", message:"+e);
+                                            }
+                                            
+                                        }
+                                        
+                                        var result=gatewayResult;
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="AutoKepwareIngestionStat">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        var totalWrites=0;
+                                        var maxSampleThings = maxSampledThings;
+                                        var maxSampleProperties = maxSampledProperties;
+                                        
+                                        // result: INFOTABLE dataShape: "DeviceStatus"
+                                        var devicesResult =  Resources["DeviceFunctions"].SearchDevices({
+                                        	thingShape: undefined /* THINGSHAPENAME */,
+                                        	maxItems: undefined /* NUMBER */,
+                                        	nameMask: undefined /* STRING */,
+                                        	query: undefined /* QUERY */,
+                                        	thingTemplate: thingTemplate /* THINGTEMPLATENAME */
+                                        });
+                                        //generate 10 random things
+                                        var selectThings = [];
+                                        for(var deviceIndex=0;deviceIndex<devicesResult.rows.length;deviceIndex++){
+                                            var newValue=Math.floor(Math.random() * devicesResult.rows.length);
+                                            if(selectThings.indexOf(newValue)===-1){
+                                                selectThings.push(newValue);
+                                                if(selectThings.length>=maxSampleThings){
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        
+                                        var endTime= dateAddMinutes(startTime, periodInMinute);
+                                        // result: INFOTABLE
+                                        var result = Resources["InfoTableFunctions"].CreateInfoTable({infoTableName: undefined /* STRING */});
+                                        
+                                        //Add a new field to the InfoTable:
+                                        result.AddField({name: "thing", baseType: "STRING"});
+                                        result.AddField({name: "property", baseType: "STRING"});
+                                        result.AddField({name: "TimeGapAVG", baseType: "NUMBER"});
+                                        result.AddField({name: "TimeGapSTD", baseType: "NUMBER"});
+                                        result.AddField({name: "StartValue", baseType: "NUMBER"});
+                                        result.AddField({name: "EndValue", baseType: "NUMBER"});
+                                        result.AddField({name: "StartTime", baseType: "DATETIME"});
+                                        result.AddField({name: "EndTime", baseType: "DATETIME"});
+                                        result.AddField({name: "totalCount", baseType: "NUMBER"});
+                                        result.AddField({name: "ValueException", baseType: "BOOLEAN"});
+                                        
+                                        for(var selectedIndex=0;selectedIndex<selectThings.length;selectedIndex++){
+                                            var oneThing = Things[devicesResult.rows[selectThings[selectedIndex]].name];
+                                                // result: INFOTABLE dataShape: "PropertyDefinition"
+                                            var propertiesResult =  oneThing.GetLoggedProperties({type: undefined /* BASETYPENAME */});
+                                            //sample properties for 3
+                                            var selectedProperties = [];
+                                            for(var propertyIndex=0;propertyIndex<propertiesResult.rows.length;propertyIndex++){
+                                                var newPropertyValue=Math.floor(Math.random() * propertiesResult.rows.length);
+                                                if(selectedProperties.indexOf(newPropertyValue)===-1){
+                                                    selectedProperties.push(newPropertyValue);
+                                                    if(selectedProperties.length>=maxSampleProperties){
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                            for(var selectedPropertyIndex=0;selectedPropertyIndex<selectedProperties.length;selectedPropertyIndex++){
+                                                        // result: INFOTABLE dataShape: "NumberValueStream"
+                                                var valuesResult =  oneThing.QueryNumberPropertyHistory({
+                                                    oldestFirst: false /* BOOLEAN */,
+                                                    maxItems: 1000000 /* NUMBER */,
+                                                    endDate: endTime /* DATETIME */,
+                                                    propertyName: propertiesResult.rows[selectedProperties[selectedPropertyIndex]].name /* STRING */,
+                                                    query: undefined /* QUERY */,
+                                                    startDate: startTime /* DATETIME */
+                                                });
+                                        		if(valuesResult.rows.length===0 || valuesResult.rows.length===1){
+                                                    //exception.
+                                                    result.AddRow({
+                                                        thing : oneThing.name,
+                                                        property : propertiesResult.rows[selectedProperties[selectedPropertyIndex]].name,
+                                                        totalCount:valuesResult.rows.length,
+                                                        ValueException:true
+                                                    });
+                                                }else{
+                                                    //calculate std and variance
+                                                    var n = valuesResult.rows.length;
+                                                    var resultStartTime=valuesResult.rows[n-1].timestamp;
+                                                    var resultEndTime=valuesResult.rows[0].timestamp;
+                                                    var startValue = valuesResult.rows[n-1].value;
+                                                    var endValue = valuesResult.rows[0].value;
+                                                    var totalCount = n;
+                                                    var valueException = true;
+                                                    if(totalCount == endValue-startValue+1) valueException = false;
+                                                    var timeGaps=[];
+                                                    var timeGapSum = 0.0;
+                                                    for(var valueIndex=1;valueIndex<valuesResult.rows.length;valueIndex++){
+                                                        var timeGap = valuesResult.rows[valueIndex-1].timestamp.getTime() - valuesResult.rows[valueIndex].timestamp.getTime();
+                                                        timeGapSum += timeGap;
+                                                        timeGaps.push(timeGap);
+                                                    }
+                                                    var timeGapAVG = timeGapSum/(n-1);
+                                                    var timeGapSquarSum = 0.0;
+                                                    for(var timeGapIndex=0; timeGapIndex<timeGaps.length;timeGapIndex++){
+                                                        timeGapSquarSum += Math.pow((timeGaps[timeGapIndex]-timeGapAVG), 2);
+                                                    }
+                                                    var std = Math.sqrt(timeGapSquarSum/(n-1)); //some case, this should be n-2.
+                                                    result.AddRow({
+                                                        thing : oneThing.name,
+                                                        property : propertiesResult.rows[selectedProperties[selectedPropertyIndex]].name,
+                                                        TimeGapAVG: timeGapAVG.toFixed(2),
+                                                        TimeGapSTD: std.toFixed(2),
+                                                        StartValue: startValue,
+                                                        EndValue: endValue,
+                                                        StartTime: resultStartTime,
+                                                        EndTime: resultEndTime,
+                                                        totalCount:totalCount,
+                                                        ValueException:valueException
+                                                    });
+                                                }   
+                                            }
+                                        }
+                                        //var average = totalWrites / (periodInMinute * 60);
+                                        //var result = "total write:"+totalWrites+" in "+periodInMinute+" minutes, average:"+average+" wps.";
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="AutoKepwareRateSummary">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        var totalWrites=0;
+                                        var totalConnectedThings = 0;
+                                        var totalValueProperties = 0;
+                                        var totalNonValueProperties = 0;
+                                        var nonValuePropertiesList = [];
+                                        var totalProperties = 0;
+                                        // result: INFOTABLE dataShape: "DeviceStatus"
+                                        var devicesResult =  Resources["DeviceFunctions"].SearchDevices({
+                                        	thingShape: undefined /* THINGSHAPENAME */,
+                                        	maxItems: 200000 /* NUMBER */,
+                                        	nameMask: undefined /* STRING */,
+                                        	query: undefined /* QUERY */,
+                                        	thingTemplate: thingTemplate /* THINGTEMPLATENAME */
+                                        });
+                                        var endTime= dateAddMinutes(startTime, periodInMinute);
+                                        
+                                        var result = Resources["InfoTableFunctions"].CreateInfoTable({infoTableName: undefined /* STRING */});
+                                        //Add a new field to the InfoTable:
+                                        result.AddField({name: "Name", baseType: "STRING"});
+                                        result.AddField({name: "Value", baseType: "STRING"});
+                                        
+                                        result.AddRow({Name : "Start Time",Value : ""+ startTime});
+                                        result.AddRow({Name : "End Time",Value : ""+ endTime});
+                                        result.AddRow({Name : "Total Things",Value : ""+ devicesResult.rows.length});
+                                        
+                                        for(var deviceIndex=0;deviceIndex<devicesResult.rows.length;deviceIndex++){
+                                            var oneThing = Things[devicesResult.rows[deviceIndex].name];
+                                            if(oneThing.isConnected) totalConnectedThings +=1;
+                                                // result: INFOTABLE dataShape: "PropertyDefinition"
+                                            var propertiesResult =  oneThing.GetLoggedProperties({type: 'NUMBER' /* BASETYPENAME */});
+                                            totalProperties += propertiesResult.rows.length;
+                                            for(var propertyIndex=0;propertyIndex<propertiesResult.rows.length;propertyIndex++){
+                                                        // result: INFOTABLE dataShape: "NumberValueStream"
+                                                var valuesResult =  oneThing.QueryNumberPropertyHistory({
+                                                    oldestFirst: undefined /* BOOLEAN */,
+                                                    maxItems: 1000000 /* NUMBER */,
+                                                    endDate: endTime /* DATETIME */,
+                                                    propertyName: propertiesResult.rows[propertyIndex].name /* STRING */,
+                                                    query: undefined /* QUERY */,
+                                                    startDate: startTime /* DATETIME */
+                                                });
+                                        		totalWrites = totalWrites+valuesResult.rows.length;
+                                                if(valuesResult.rows.length>0) {totalValueProperties += 1;}
+                                                else{
+                                                    logger.warn(oneThing.name+ " property:"+propertiesResult.rows[propertyIndex].name +" doesn't have value");
+                                                    totalNonValueProperties +=1;
+                                        //            if(nonValuePropertiesList.length<15){
+                                        //                nonValuePropertiesList.push(oneThing.name+"->"+propertiesResult.rows[propertyIndex].name);
+                                        //            }
+                                                }
+                                            }
+                                        }
+                                        var average = (totalWrites / (periodInMinute * 60)).toFixed(2);
+                                        result.AddRow({Name : "Total Writes",Value : ""+ totalWrites});
+                                        result.AddRow({Name : "Average Write Per Second",Value : ""+ average});
+                                        result.AddRow({Name : "Total Connected Things",Value : ""+ totalConnectedThings});
+                                        result.AddRow({Name : "Total Properties",Value : ""+ totalProperties});
+                                        result.AddRow({Name : "Total Properties with Value",Value : ""+ totalValueProperties});
+                                        if(totalNonValueProperties>0){
+                                            result.AddRow({Name : "Total Properties without Value",Value : ""+ totalNonValueProperties});
+                                            //result.AddRow({Name : "Part of properties without Value", Value : "Please check log for all:\r\n" + nonValuePropertiesList});
+                                            result.AddRow({Name : "properties without Value", Value : "Please check script log" });
+                                        }
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="TotalDeviceByTemplate">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             description="Script"
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        var params = {
+                                        	thingShape: undefined /* THINGSHAPENAME */,
+                                        	maxItems: 200000 /* NUMBER */,
+                                        	nameMask: undefined /* STRING */,
+                                        	query: undefined /* QUERY */,
+                                        	thingTemplate: thingTemplate /* THINGTEMPLATENAME */
+                                        };
+                                        
+                                        // result: INFOTABLE dataShape: DeviceStatus
+                                        var deviceresult = Resources["DeviceFunctions"].SearchDevices(params);
+                                        
+                                        
+                                        var params = {
+                                        	t: deviceresult /* INFOTABLE */,
+                                        	columns: "isConnected" /* STRING */,
+                                        	aggregates: "COUNT" /* STRING */,
+                                        	groupByColumns: "isConnected" /* STRING */
+                                        };
+                                        
+                                        // result: INFOTABLE
+                                        var result = Resources["InfoTableFunctions"].Aggregate(params);
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="TotalDeviceByTemplateWithTemplate">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             description="Script"
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        var params = {
+                                        	thingShape: undefined /* THINGSHAPENAME */,
+                                        	maxItems: 400000 /* NUMBER */,
+                                        	nameMask: undefined /* STRING */,
+                                        	query: undefined /* QUERY */,
+                                        	thingTemplate: thingTemplate /* THINGTEMPLATENAME */
+                                        };
+                                        
+                                        // result: INFOTABLE dataShape: DeviceStatus
+                                        var deviceresult = Resources["DeviceFunctions"].SearchDevices(params);
+                                        
+                                        
+                                        var params = {
+                                        	t: deviceresult /* INFOTABLE */,
+                                        	columns: "isConnected" /* STRING */,
+                                        	aggregates: "COUNT" /* STRING */,
+                                        	groupByColumns: "thingTemplate,isConnected" /* STRING */
+                                        };
+                                        
+                                        // result: INFOTABLE
+                                        var result = Resources["InfoTableFunctions"].Aggregate(params);
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                </ServiceImplementations>
+                <Subscriptions></Subscriptions>
+            </ThingShape>
+            <PropertyBindings></PropertyBindings>
+            <RemotePropertyBindings></RemotePropertyBindings>
+            <RemoteServiceBindings></RemoteServiceBindings>
+            <RemoteEventBindings></RemoteEventBindings>
+            <AlertConfigurations></AlertConfigurations>
+            <ImplementedShapes></ImplementedShapes>
+            <ThingProperties></ThingProperties>
+        </Thing>
+    </Things>
+</Entities>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ build="b103"
+ majorVersion="8"
+ minorVersion="5"
+ modelPersistenceProviderPackage="PostgresPersistenceProviderPackage"
+ revision="5"
+ schemaVersion="1054"
+ universal="password">
+    <ExtensionPackages>
+        <ExtensionPackage
+         artifactId=""
+         aspect.isExtension="true"
+         buildNumber=""
+         dependsOn=""
+         description="ThingWorx DiffViewer Widget"
+         documentationContent=""
+         groupId=""
+         homeMashup=""
+         lastModifiedDate="2020-06-24T19:58:42.753Z"
+         migratorClass=""
+         minimumThingWorxVersion="7.4.0"
+         name="DiffViewer"
+         packageVersion="1.0.6"
+         projectName=""
+         tags=""
+         vendor="ThingWorx Labs">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+        </ExtensionPackage>
+    </ExtensionPackages>
+</Entities>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ build="b103"
+ majorVersion="8"
+ minorVersion="5"
+ modelPersistenceProviderPackage="PostgresPersistenceProviderPackage"
+ revision="5"
+ schemaVersion="1054"
+ universal="password">
+    <DataShapes>
+        <DataShape
+         aspect.isSystemObject="true"
+         baseDataShape=""
+         description="Data associated with a configuration modification"
+         documentationContent=""
+         homeMashup=""
+         lastModifiedDate="2020-05-17T10:57:53.286Z"
+         name="ConfigurationChange"
+         projectName=""
+         tags="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <FieldDefinitions>
+                <FieldDefinition
+                 baseType="STRING"
+                 description="Type of change"
+                 name="changeAction"
+                 ordinal="0"></FieldDefinition>
+                <FieldDefinition
+                 baseType="STRING"
+                 description="Reason for making the change"
+                 name="changeReason"
+                 ordinal="0"></FieldDefinition>
+                <FieldDefinition
+                 baseType="DATETIME"
+                 description="Time of change"
+                 name="timestamp"
+                 ordinal="0"></FieldDefinition>
+                <FieldDefinition
+                 baseType="USERNAME"
+                 description="User who made the change"
+                 name="user"
+                 ordinal="0"></FieldDefinition>
+            </FieldDefinitions>
+        </DataShape>
+    </DataShapes>
+</Entities>

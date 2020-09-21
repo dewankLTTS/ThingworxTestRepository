@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ build="b103"
+ majorVersion="8"
+ minorVersion="5"
+ modelPersistenceProviderPackage="PostgresPersistenceProviderPackage"
+ revision="5"
+ schemaVersion="1054"
+ universal="password">
+    <ExtensionPackages>
+        <ExtensionPackage
+         artifactId=""
+         aspect.isExtension="true"
+         buildNumber=""
+         dependsOn=""
+         description="ThingWorx Autocomplete Widget"
+         documentationContent=""
+         groupId=""
+         homeMashup=""
+         lastModifiedDate="2020-06-24T19:58:39.528Z"
+         migratorClass=""
+         minimumThingWorxVersion="6.0.1"
+         name="Autocomplete"
+         packageVersion="1.0.37"
+         projectName=""
+         tags=""
+         vendor="PTC">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+        </ExtensionPackage>
+    </ExtensionPackages>
+</Entities>
